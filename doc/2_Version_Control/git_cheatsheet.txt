@@ -1,2 +1,44 @@
 git commit
-git bran
+Saves a snapshot of your staged changes to the repo's history.
+Common args: -m "message" (set commit message), -a (auto stage tracked files)
+
+git branch
+Lists, creates, or deletes branches.
+Common args: (none) lists branches, <name> creates a branch, -d <name> deletes a branch
+
+git checkout
+Switches your working directory to a different branch or commit.
+Common args: <branch name> switches branches, -b <name> creates and switches to a new branch
+
+git pull
+Fetches changes from a remote and merges them into your current branch.
+Common args: <remote> <branch> (e.g. origin main)
+
+git push
+Sends your committed changes to a remote repo.
+Common args: <remote> <branch> (e.g. origin main)
+Note: -u <remote> <branch> sets that remote/branch as the "upstream" for your current local branch. Only needed the first time you push a new branch. After that, you can just run git push with no arguments and it'll know where to send it.
+
+git merge
+Combines changes from one branch into the branch you're currently on.
+Common args: <branch name> (the branch you want to merge in)
+
+git rebase
+Replays your commits on top of another branch, giving a cleaner, linear history.
+Common args: <branch name> (the branch you want to rebase onto)
+
+git fetch
+Downloads changes from a remote but does not merge them into your branch.
+Common args: <remote> (e.g. origin)
+
+git add
+Stages changes (new, modified, or deleted files) so they're included in the next commit.
+Common args: <file path> (stage a specific file), . (stage everything in the current directory), -A (stage all changes in the repo)
+
+git status
+Shows the current state of your working directory: which files are staged, unstaged, or untracked.
+Common args: (usually run with no arguments)
+
+git log
+Shows the commit history for your current branch, newest commit first.
+Common args: --oneline (condensed one-line-per-commit view), -n <number> (limit how many commits to show, e.g. -5)

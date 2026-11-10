@@ -11,7 +11,6 @@
 #include "LED.h"
 
 #define SLEEP_MS 1
-
 int main(void) {
   if (0 > BTN_init()) {
     return 0;
@@ -19,24 +18,18 @@ int main(void) {
   if (0 > LED_init()) {
     return 0;
   }
-LED_blink(LED0, LED_1HZ);
 
-LED_set(LED1, LED_ON);
-uint8_t duty_cycle = 0;
-while (1) {
-  LED_pwm(LED2, duty_cycle);
+  uint8_t count = 0;
 
-  if (BTN_check_clear_pressed(BTN0)) {
-  LED_toggle(LED2);
-}
+  while (1) {
+    if (BTN_check_clear_pressed(BTN0)) {
+      count = (count + 1) % 16;
 
-  if (duty_cycle == 100){
-    LED_toggle(LED3);
-    duty_cycle = 0;
-  } else {
-    duty_cycle++;
-  }
-
+      LED_set(LED0, (count & 0x1) ? LED_ON : LED_OFF);
+      LED_set(LED1, (count & 0x2) ? LED_ON : LED_OFF);
+      LED_set(LED2, (count & 0x4) ? LED_ON : LED_OFF);
+      LED_set(LED3, (count & 0x8) ? LED_ON : LED_OFF);
+    }
     k_msleep(SLEEP_MS);
   }
   return 0;

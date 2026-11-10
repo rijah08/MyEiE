@@ -26,6 +26,10 @@ uint8_t duty_cycle = 0;
 while (1) {
   LED_pwm(LED2, duty_cycle);
 
+  if (BTN_check_clear_pressed(BTN0)) {
+  LED_toggle(LED2);
+}
+
   if (duty_cycle == 100){
     LED_toggle(LED3);
     duty_cycle = 0;
